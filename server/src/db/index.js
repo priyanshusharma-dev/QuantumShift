@@ -27,6 +27,9 @@ export async function initDb() {
       close: () => pool.end(),
     };
   } else {
+    if (process.env.NODE_ENV === 'production' && !process.env.ALLOW_PGLITE) {
+      throw new Error('DATABASE_URL is not set — refusing to start embedded PGlite in production (exceeds 512 MB).');
+    }
     const { PGlite } = await import('@electric-sql/pglite');
     fs.mkdirSync(config.pgliteDir, { recursive: true });
     const db = new PGlite(config.pgliteDir);
