@@ -12,7 +12,8 @@ import { runDiagnostics } from './services/health.js';
 
 const app = express();
 app.disable('x-powered-by');
-app.set('trust proxy', 'loopback');
+// Behind a cloud load balancer set TRUST_PROXY=1 so rate limits key on the real client IP.
+app.set('trust proxy', /^\d+$/.test(process.env.TRUST_PROXY || '') ? Number(process.env.TRUST_PROXY) : process.env.TRUST_PROXY || 'loopback');
 
 app.use(
   helmet({
