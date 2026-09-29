@@ -73,8 +73,8 @@ async function main() {
   await initDb();
   console.log(`[db] connected — ${dbEngine()}`);
   await seedIfEmpty();
-  app.listen(config.port, () => {
-    console.log(`[api] QuantumShift API listening on http://localhost:${config.port}`);
+  app.listen(config.port, '0.0.0.0', () => {
+    console.log(`[api] QuantumShift API listening on http://0.0.0.0:${config.port}`);
     if (config.jwtSecretEphemeral) console.warn('[security] JWT_SECRET not set — using an ephemeral per-process secret (sessions reset on restart).');
     runDiagnostics().catch((e) => console.error('[diagnostics]', e.message));
   });
