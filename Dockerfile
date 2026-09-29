@@ -17,7 +17,8 @@ FROM node:24-bookworm-slim
 ENV NODE_ENV=production \
     PORT=4000 \
     TRUST_PROXY=1 \
-    PGLITE_DATA_DIR=data/pglite
+    PGLITE_DATA_DIR=data/pglite \
+    NODE_OPTIONS=--max-old-space-size=384
 WORKDIR /app
 COPY --from=server-deps /app/server/node_modules ./server/node_modules
 COPY server/ ./server/
