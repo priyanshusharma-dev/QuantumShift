@@ -1,0 +1,19 @@
+{
+  "_comment": "DEMO SAMPLE — synthetic AWS cryptographic inventory export (no real account data).",
+  "account": "000000000000",
+  "region": "us-east-1",
+  "kms": [
+    { "alias": "alias/payments-signing", "keySpec": "RSA_2048", "keyUsage": "SIGN_VERIFY" },
+    { "alias": "alias/customer-data-wrap", "keySpec": "RSA_3072", "keyUsage": "ENCRYPT_DECRYPT" },
+    { "alias": "alias/iot-device-attest", "keySpec": "ECC_NIST_P256", "keyUsage": "SIGN_VERIFY" },
+    { "alias": "alias/s3-default", "keySpec": "SYMMETRIC_DEFAULT", "keyUsage": "ENCRYPT_DECRYPT" }
+  ],
+  "acm": [
+    { "domain": "api.demo-enterprise.example", "keyAlgorithm": "RSA_2048", "notAfter": "2027-03-01" },
+    { "domain": "cdn.demo-enterprise.example", "keyAlgorithm": "EC_prime256v1", "notAfter": "2026-12-15" }
+  ],
+  "elb": [
+    { "name": "public-api-alb", "sslPolicy": "ELBSecurityPolicy-TLS-1-2-2017-01" },
+    { "name": "partner-nlb", "sslPolicy": "ELBSecurityPolicy-TLS13-1-2-2021-06" }
+  ]
+}

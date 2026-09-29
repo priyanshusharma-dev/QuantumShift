@@ -1,0 +1,12 @@
+{
+  "name": "banking-api",
+  "version": "4.2.1",
+  "description": "Retail banking REST API (DEMO SAMPLE — contains intentionally quantum-vulnerable cryptography for QuantumShift demonstrations; no real secrets)",
+  "main": "src/server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-rsa": "^1.1.1",
+    "node-forge": "^1.3.1"
+  }
+}
